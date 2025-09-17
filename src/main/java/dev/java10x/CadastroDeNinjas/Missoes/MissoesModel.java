@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+
 @Entity
 @Table(name = "tb_missoes")
 public class MissoesModel {
@@ -12,38 +13,32 @@ public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomeDaMissao;
-    private String dificuldadeDaMissao;
-    private NinjaModel ninja;
+    private String nome;
+    private String dificuldade;
+    @OneToMany(mappedBy = "missoes")
+    private List<NinjaModel> ninjas;
+
 
     public MissoesModel(){}
-    public MissoesModel(String nome, String dificuldade, List<NinjaModel> ninjas/*Provavel List<Ninjas> aqui*/){
-        this.nomeDaMissao = nome;
-        this.dificuldadeDaMissao = dificuldade;
-        //this.ninja = ninjas;
+    public MissoesModel(String nome, String dificuldade){
+        this.nome = nome;
+        this.dificuldade = dificuldade;
+
     }
 
-    public String getNomeDaMissao() {
-        return nomeDaMissao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeDaMissao(String nomeDaMissao) {
-        this.nomeDaMissao = nomeDaMissao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDificuldadeDaMissao() {
-        return dificuldadeDaMissao;
+    public String getDificuldade() {
+        return dificuldade;
     }
 
-    public void setDificuldadeDaMissao(String dificuldadeDaMissao) {
-        this.dificuldadeDaMissao = dificuldadeDaMissao;
-    }
-
-    public NinjaModel getNinja() {
-        return ninja;
-    }
-
-    public void setNinja(NinjaModel ninja) {
-        this.ninja = ninja;
+    public void setDificuldade(String dificuldade) {
+        this.dificuldade = dificuldade;
     }
 }
