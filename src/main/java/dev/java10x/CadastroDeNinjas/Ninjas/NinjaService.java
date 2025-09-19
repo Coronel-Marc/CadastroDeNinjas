@@ -25,12 +25,12 @@ public class NinjaService {
 
     public NinjaModel findNinjaById(Long id) {
         return repository.findById(id)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não encontrado"));
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ninja não encontrado"));
     }
 
     public NinjaModel deleteNinjaById(Long id) {
         NinjaModel ninja = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Ninja não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ninja não encontrado"));
         repository.deleteById(id);
         return ninja;
     }
