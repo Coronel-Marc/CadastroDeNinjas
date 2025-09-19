@@ -9,8 +9,4 @@ import java.util.List;
 @Repository
 public interface NinjaRepository extends JpaRepository<NinjaModel, Long> {
 
-    List<NinjaModel> findByNome(String nome);
-
-
-
 }
